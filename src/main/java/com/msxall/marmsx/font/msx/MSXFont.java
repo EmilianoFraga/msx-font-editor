@@ -28,12 +28,14 @@
  * Designed for MSX font services                                          *
  * MVC: Model / Business Object (BO) + Data Access Object (DAO)            *
  ***************************************************************************/
+package com.msxall.marmsx.font.msx;
 
-import java.util.Arrays;
-import java.awt.Graphics2D;
-import java.awt.Color;
+import com.msxall.marmsx.character.MSXCharacter;
+import com.msxall.marmsx.character.MSXCharacterData;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.Font;
+import java.util.Arrays;
 
 public class MSXFont {
 

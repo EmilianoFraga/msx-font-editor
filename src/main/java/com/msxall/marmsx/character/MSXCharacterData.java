@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Class StackManager                                                    *
+ *   Class MSXCharacterData                                                *
  *                                                                         *
  *   Copyright (C) 2018 by Marcelo Teixeira Silveira, D.Sc.                *
  *   MSX Font Editor: http://marmsx.msxall.com                             *
@@ -22,46 +22,39 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+package com.msxall.marmsx.character;
 
 /***************************************************************************
  * Class description:                                                      *
- * Designed for managing data stack                                        *
+ * Designed for storing character data                                     *
  * MVC: Model / Value Object (VO)                                          *
  ***************************************************************************/
 
-import java.util.ArrayList;
+public class MSXCharacterData {
 
-public class StackManager<E> {
-	private ArrayList<E> list = new ArrayList<E>();
-	private int current_stack_pos=-1;
+	private byte data[] = new byte[8];
 
-	public void save(E item) {
-		if (current_stack_pos < list.size()-1)
-			removeTopElements();
-		list.add(item);
-		current_stack_pos++;
+	public MSXCharacterData() {
 	}
 
-	public E top() {
-		return list.get(current_stack_pos);
+	public MSXCharacterData(byte new_data[]) {
+		setCharacter(new_data);
 	}
 
-	public E undo() {
-		if (current_stack_pos < 1)
-			return null;
+	public void setCharacter(byte new_data[]) {
+		if (new_data.length !=8)
+			return;
 
-		return list.get(--current_stack_pos);
+		for (int i=0; i<8; i++)
+			data[i] = new_data[i];
 	}
 
-	public E redo() {
-		if (current_stack_pos >= list.size()-1)
-			return null;
+	public byte[] getCharacter() {
+		byte tmp_data[] = new byte[8];
 
-		return list.get(++current_stack_pos);
-	}
+		for (int i=0; i<8; i++)
+			tmp_data[i] = data[i];
 
-	private void removeTopElements() {
-		for (int i=list.size()-1; i>current_stack_pos; i--)
-			list.remove(i);
+		return tmp_data;
 	}
 }

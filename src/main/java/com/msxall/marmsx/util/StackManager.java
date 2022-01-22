@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Class MSXCharacterData                                                *
+ *   Class StackManager                                                    *
  *                                                                         *
  *   Copyright (C) 2018 by Marcelo Teixeira Silveira, D.Sc.                *
  *   MSX Font Editor: http://marmsx.msxall.com                             *
@@ -25,35 +25,44 @@
 
 /***************************************************************************
  * Class description:                                                      *
- * Designed for storing character data                                     *
+ * Designed for managing data stack                                        *
  * MVC: Model / Value Object (VO)                                          *
  ***************************************************************************/
+package com.msxall.marmsx.util;
 
-public class MSXCharacterData {
+import java.util.ArrayList;
 
-	private byte data[] = new byte[8];
+public class StackManager<E> {
+	private ArrayList<E> list = new ArrayList<E>();
+	private int current_stack_pos=-1;
 
-	public MSXCharacterData() {
+	public void save(E item) {
+		if (current_stack_pos < list.size()-1)
+			removeTopElements();
+		list.add(item);
+		current_stack_pos++;
 	}
 
-	public MSXCharacterData(byte new_data[]) {
-		setCharacter(new_data);
+	public E top() {
+		return list.get(current_stack_pos);
 	}
 
-	public void setCharacter(byte new_data[]) {
-		if (new_data.length !=8)
-			return;
+	public E undo() {
+		if (current_stack_pos < 1)
+			return null;
 
-		for (int i=0; i<8; i++)
-			data[i] = new_data[i];
+		return list.get(--current_stack_pos);
 	}
 
-	public byte[] getCharacter() {
-		byte tmp_data[] = new byte[8];
+	public E redo() {
+		if (current_stack_pos >= list.size()-1)
+			return null;
 
-		for (int i=0; i<8; i++)
-			tmp_data[i] = data[i];
+		return list.get(++current_stack_pos);
+	}
 
-		return tmp_data;
+	private void removeTopElements() {
+		for (int i=list.size()-1; i>current_stack_pos; i--)
+			list.remove(i);
 	}
 }

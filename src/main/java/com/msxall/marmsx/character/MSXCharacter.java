@@ -28,6 +28,7 @@
  * Designed for MSX character services                                     *
  * MVC: Model / Business Object (BO)                                       *
  ***************************************************************************/
+package com.msxall.marmsx.character;
 
 import java.awt.Graphics2D;
 import java.awt.Color;

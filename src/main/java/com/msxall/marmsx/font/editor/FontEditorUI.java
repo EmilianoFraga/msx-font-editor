@@ -28,13 +28,15 @@
  * Main program interface                                                  *
  * MVC: View                                                               *
  ***************************************************************************/
+package com.msxall.marmsx.font.editor;
+
+import com.msxall.marmsx.util.ResourceLoader;
+import com.msxall.marmsx.wizard.Wizard;
 
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -42,27 +44,21 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 import javax.swing.JToggleButton;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import java.awt.Component;
 import java.util.Timer;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
-
 
 public class FontEditorUI extends JFrame {
 
@@ -146,8 +142,7 @@ public class FontEditorUI extends JFrame {
 		charMouseDragged=false;
 
 		// App icon
-		Image img = new ImageIcon(this.getClass().getResource("imgs/icon.png")).getImage();
-		setIconImage(img);
+		setIconImage(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/icon.png").getImage());
 
 		// Tooltips configuration
 		//UIManager.put("ToolTip.background", Color.YELLOW);
@@ -297,8 +292,7 @@ public class FontEditorUI extends JFrame {
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setBounds(3, 3, 115, 115);
 		panelLogo.add(logoLabel);
-		Image logo = new ImageIcon(this.getClass().getResource("imgs/logo.png")).getImage();
-		logoLabel.setIcon(new ImageIcon(logo));
+		logoLabel.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/logo.png"));
 
 		
 		/************************************************
@@ -315,8 +309,7 @@ public class FontEditorUI extends JFrame {
 		JButton undoButton = new JButton("");
 		undoButton.setToolTipText("Undo");
 		undoButton.setBounds(10, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_undo.png")).getImage();
-		undoButton.setIcon(new ImageIcon(img));
+		undoButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_undo.png"));
 		panelCharCtrl.add(undoButton);
 		undoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -329,8 +322,7 @@ public class FontEditorUI extends JFrame {
 		JButton redoButton = new JButton("");
 		redoButton.setToolTipText("Redo");
 		redoButton.setBounds(53, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_redo.png")).getImage();
-		redoButton.setIcon(new ImageIcon(img));
+		redoButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_redo.png"));
 		panelCharCtrl.add(redoButton);
 		redoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -343,8 +335,7 @@ public class FontEditorUI extends JFrame {
 		JButton boldButton = new JButton("");
 		boldButton.setToolTipText("Bold");
 		boldButton.setBounds(102, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_bold.png")).getImage();
-		boldButton.setIcon(new ImageIcon(img));
+		boldButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_bold.png"));
 		panelCharCtrl.add(boldButton);
 		boldButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -357,8 +348,7 @@ public class FontEditorUI extends JFrame {
 		JButton italicButton = new JButton("");
 		italicButton.setToolTipText("Italic");
 		italicButton.setBounds(145, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_italic.png")).getImage();
-		italicButton.setIcon(new ImageIcon(img));
+		italicButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_italic.png"));
 		panelCharCtrl.add(italicButton);
 		italicButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -371,8 +361,7 @@ public class FontEditorUI extends JFrame {
 		JButton invButton = new JButton("");
 		invButton.setToolTipText("Invert colors");
 		invButton.setBounds(188, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_inv.png")).getImage();
-		invButton.setIcon(new ImageIcon(img));
+		invButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_inv.png"));
 		panelCharCtrl.add(invButton);
 		invButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -385,8 +374,7 @@ public class FontEditorUI extends JFrame {
 		allButton = new JToggleButton("");
 		allButton.setToolTipText("Apply to all font");
 		allButton.setBounds(10, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_all.png")).getImage();
-		allButton.setIcon(new ImageIcon(img));
+		allButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_all.png"));
 		panelCharCtrl.add(allButton);
 		allButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -405,8 +393,7 @@ public class FontEditorUI extends JFrame {
 		JButton clearButton = new JButton("");
 		clearButton.setToolTipText("Clear");
 		clearButton.setBounds(53, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_clear.png")).getImage();
-		clearButton.setIcon(new ImageIcon(img));
+		clearButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_clear.png"));
 		panelCharCtrl.add(clearButton);
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -419,8 +406,7 @@ public class FontEditorUI extends JFrame {
 		JButton flipudButton = new JButton("");
 		flipudButton.setToolTipText("Flip up/down");
 		flipudButton.setBounds(102, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_flip_ud.png")).getImage();
-		flipudButton.setIcon(new ImageIcon(img));
+		flipudButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_flip_ud.png"));
 		panelCharCtrl.add(flipudButton);
 		flipudButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -433,8 +419,7 @@ public class FontEditorUI extends JFrame {
 		JButton mirrorButton = new JButton("");
 		mirrorButton.setToolTipText("Mirror");
 		mirrorButton.setBounds(145, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_flip_lr.png")).getImage();
-		mirrorButton.setIcon(new ImageIcon(img));
+		mirrorButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_flip_lr.png"));
 		panelCharCtrl.add(mirrorButton);
 		mirrorButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -447,8 +432,7 @@ public class FontEditorUI extends JFrame {
 		JButton rotateButton = new JButton("");
 		rotateButton.setToolTipText("Rotate");
 		rotateButton.setBounds(188, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_rotate.png")).getImage();
-		rotateButton.setIcon(new ImageIcon(img));
+		rotateButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_rotate.png"));
 		panelCharCtrl.add(rotateButton);
 		rotateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -466,8 +450,7 @@ public class FontEditorUI extends JFrame {
 		JButton shiftLeftButton = new JButton("");
 		shiftLeftButton.setToolTipText("Shift left");
 		shiftLeftButton.setBounds(59, 115, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_left.png")).getImage();
-		shiftLeftButton.setIcon(new ImageIcon(img));
+		shiftLeftButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_left.png"));
 		panelCharCtrl.add(shiftLeftButton);
 		shiftLeftButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -479,8 +462,7 @@ public class FontEditorUI extends JFrame {
 		JButton shiftRightButton = new JButton("");
 		shiftRightButton.setToolTipText("Shift right");
 		shiftRightButton.setBounds(102, 115, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_right.png")).getImage();
-		shiftRightButton.setIcon(new ImageIcon(img));
+		shiftRightButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_right.png"));
 		panelCharCtrl.add(shiftRightButton);
 		shiftRightButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -492,8 +474,7 @@ public class FontEditorUI extends JFrame {
 		JButton shiftUpButton = new JButton("");
 		shiftUpButton.setToolTipText("Shift up");
 		shiftUpButton.setBounds(145, 115, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_up.png")).getImage();
-		shiftUpButton.setIcon(new ImageIcon(img));
+		shiftUpButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_up.png"));
 		panelCharCtrl.add(shiftUpButton);
 		shiftUpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -505,8 +486,7 @@ public class FontEditorUI extends JFrame {
 		JButton shiftDownButton = new JButton("");
 		shiftDownButton.setToolTipText("Shift down");
 		shiftDownButton.setBounds(188, 115, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_down.png")).getImage();
-		shiftDownButton.setIcon(new ImageIcon(img));
+		shiftDownButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_down.png"));
 		panelCharCtrl.add(shiftDownButton);
 		shiftDownButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -529,8 +509,7 @@ public class FontEditorUI extends JFrame {
 		JButton loadButton = new JButton("");		
 		loadButton.setToolTipText("Load font");
 		loadButton.setBounds(10, 25, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/fileopen.png")).getImage();
-		loadButton.setIcon(new ImageIcon(img));
+		loadButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/fileopen.png"));
 		panelFontCtrl.add(loadButton);
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -543,8 +522,7 @@ public class FontEditorUI extends JFrame {
 		JButton saveButton = new JButton("");
 		saveButton.setToolTipText("Save font");
 		saveButton.setBounds(10, 70, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/msxdisk.png")).getImage();
-		saveButton.setIcon(new ImageIcon(img));
+		saveButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/msxdisk.png"));
 		panelFontCtrl.add(saveButton);
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -556,8 +534,7 @@ public class FontEditorUI extends JFrame {
 		// Font extractor
 		JButton fsearchButton = new JButton("");
 		fsearchButton.setToolTipText("Extract font from file");
-		img = new ImageIcon(this.getClass().getResource("imgs/fsearch.png")).getImage();
-		fsearchButton.setIcon(new ImageIcon(img));
+		fsearchButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/fsearch.png"));
 		fsearchButton.setBounds(55, 25, 37, 37);
 		panelFontCtrl.add(fsearchButton);
 		fsearchButton.addActionListener(new ActionListener() {
@@ -569,8 +546,7 @@ public class FontEditorUI extends JFrame {
 		// Font reference
 		fABCButton = new JToggleButton("");
 		fABCButton.setToolTipText("Show ASCII default charcters");
-		img = new ImageIcon(this.getClass().getResource("imgs/abc.png")).getImage();
-		fABCButton.setIcon(new ImageIcon(img));
+		fABCButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/abc.png"));
 		fABCButton.setBounds(55, 70, 37, 37);
 		panelFontCtrl.add(fABCButton);
 		fABCButton.addActionListener(new ActionListener() {
@@ -582,8 +558,7 @@ public class FontEditorUI extends JFrame {
 		// PC font
 		JButton pcfontButton = new JButton("");
 		pcfontButton.setToolTipText("Import PC font");
-		img = new ImageIcon(this.getClass().getResource("imgs/pc_font.png")).getImage();
-		pcfontButton.setIcon(new ImageIcon(img));
+		pcfontButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/pc_font.png"));
 		pcfontButton.setBounds(100, 25, 37, 37);
 		panelFontCtrl.add(pcfontButton);
 		pcfontButton.addActionListener(new ActionListener() {
@@ -596,8 +571,7 @@ public class FontEditorUI extends JFrame {
 		// Mosaic
 		JButton mosaicButton = new JButton("");
 		mosaicButton.setToolTipText("Create mosaic");
-		img = new ImageIcon(this.getClass().getResource("imgs/mosaic.png")).getImage();
-		mosaicButton.setIcon(new ImageIcon(img));
+		mosaicButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/mosaic.png"));
 		mosaicButton.setBounds(100, 70, 37, 37);
 		panelFontCtrl.add(mosaicButton);
 		mosaicButton.addActionListener(new ActionListener() {
@@ -610,8 +584,7 @@ public class FontEditorUI extends JFrame {
 		// Copy
 		JButton copyButton = new JButton("");
 		copyButton.setToolTipText("Copy selected characters");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_copy.png")).getImage();
-		copyButton.setIcon(new ImageIcon(img));
+		copyButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_copy.png"));
 		copyButton.setBounds(145, 25, 37, 37);
 		panelFontCtrl.add(copyButton);
 		copyButton.addActionListener(new ActionListener() {
@@ -624,8 +597,7 @@ public class FontEditorUI extends JFrame {
 		// Paste
 		JButton pasteButton = new JButton("");
 		pasteButton.setToolTipText("Paste selected characters");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_paste.png")).getImage();
-		pasteButton.setIcon(new ImageIcon(img));
+		pasteButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_paste.png"));
 		pasteButton.setBounds(145, 70, 37, 37);
 		panelFontCtrl.add(pasteButton);
 		pasteButton.addActionListener(new ActionListener() {
@@ -639,8 +611,7 @@ public class FontEditorUI extends JFrame {
 		JButton mhelpButton = new JButton("");
 		mhelpButton.setToolTipText("Mouse help");
 		mhelpButton.setBounds(585, 448, 45, 45);
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_mouse.png")).getImage();
-		mhelpButton.setIcon(new ImageIcon(img));
+		mhelpButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_mouse.png"));
 		add(mhelpButton);
 		mhelpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -664,8 +635,7 @@ public class FontEditorUI extends JFrame {
 		JLabel colorLabel = new JLabel("");
 		colorLabel.setBounds(15, 25, 72, 72);
 		fontColorCtrl.add(colorLabel);
-		img = new ImageIcon(this.getClass().getResource("imgs/msx1_palette.png")).getImage();
-		colorLabel.setIcon(new ImageIcon(img));
+		colorLabel.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/msx1_palette.png"));
 		colorLabel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int i, x = (e.getX() / 18), y = (e.getY() / 18);
@@ -728,8 +698,7 @@ public class FontEditorUI extends JFrame {
 		// Previous font
 		JButton prevButton = new JButton("");
 		prevButton.setToolTipText("Previous font");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_left.png")).getImage();
-		prevButton.setIcon(new ImageIcon(img));
+		prevButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_left.png"));
 		prevButton.setBounds(10, 20, 45, 37);
 		panelFontNav.add(prevButton);
 		prevButton.addActionListener(new ActionListener() {
@@ -742,8 +711,7 @@ public class FontEditorUI extends JFrame {
 		// Next font
 		JButton nextButton = new JButton("");
 		nextButton.setToolTipText("Next font");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_right.png")).getImage();
-		nextButton.setIcon(new ImageIcon(img));
+		nextButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_right.png"));
 		nextButton.setBounds(472, 20, 45, 37);
 		panelFontNav.add(nextButton);
 		nextButton.addActionListener(new ActionListener() {
@@ -827,8 +795,7 @@ public class FontEditorUI extends JFrame {
 		
 		JLabel lblMarMSX = new JLabel("");
 		lblMarMSX.setBounds(678, 553, 207, 56);
-		img = new ImageIcon(this.getClass().getResource("imgs/marmsx.png")).getImage();
-		lblMarMSX.setIcon(new ImageIcon(img));
+		lblMarMSX.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/marmsx.png"));
 		add(lblMarMSX);
 	}
 }
