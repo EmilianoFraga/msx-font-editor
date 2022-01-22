@@ -28,13 +28,13 @@
  * Search editor for binary files                                          *
  * MVC: View                                                               *
  ***************************************************************************/
+package com.msxall.marmsx.search;
+
+import com.msxall.marmsx.util.ResourceLoader;
 
 import java.awt.Image;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JCheckBox;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -42,24 +42,16 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
-import javax.swing.JToggleButton;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import java.awt.Component;
-import java.util.Timer;
 import javax.swing.UIManager;
 
 public class SearchEditorUI extends JDialog {
@@ -116,7 +108,7 @@ public class SearchEditorUI extends JDialog {
 		setLayout(null);
 
 		// App icon
-		Image img = new ImageIcon(this.getClass().getResource("imgs/icon.png")).getImage();
+		Image img = ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/icon.png").getImage();
 		setIconImage(img);
 
 		// Tooltips configuration
@@ -160,8 +152,7 @@ public class SearchEditorUI extends JDialog {
 		JButton loadButton = new JButton("");
 		loadButton.setToolTipText("Load font");
 		loadButton.setBounds(550, 40, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/fileopen.png")).getImage();
-		loadButton.setIcon(new ImageIcon(img));
+		loadButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/fileopen.png"));
 		add(loadButton);
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -188,8 +179,7 @@ public class SearchEditorUI extends JDialog {
 		upButton = new JButton("");		
 		upButton.setToolTipText("Fine adjustment up");
 		upButton.setBounds(550, 250, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_up.png")).getImage();
-		upButton.setIcon(new ImageIcon(img));
+		upButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_up.png"));
 		add(upButton);
 		upButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -200,8 +190,7 @@ public class SearchEditorUI extends JDialog {
 		downButton = new JButton("");		
 		downButton.setToolTipText("Fine adjustment down");
 		downButton.setBounds(600, 250, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/shift_down.png")).getImage();
-		downButton.setIcon(new ImageIcon(img));
+		downButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/shift_down.png"));
 		add(downButton);
 		downButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -212,8 +201,7 @@ public class SearchEditorUI extends JDialog {
 		resetButton = new JButton("");		
 		resetButton.setToolTipText("Reset adjustment to ZERO");
 		resetButton.setBounds(650, 250, 37, 37);
-		img = new ImageIcon(this.getClass().getResource("imgs/reset.png")).getImage();
-		resetButton.setIcon(new ImageIcon(img));
+		resetButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/reset.png"));
 		add(resetButton);
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -273,8 +261,7 @@ public class SearchEditorUI extends JDialog {
 		// Previous font
 		JButton prevButton = new JButton("");
 		prevButton.setToolTipText("Previous page");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_left.png")).getImage();
-		prevButton.setIcon(new ImageIcon(img));
+		prevButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_left.png"));
 		prevButton.setBounds(10, 20, 45, 37);
 		panelFontNav.add(prevButton);
 		prevButton.addActionListener(new ActionListener() {
@@ -287,8 +274,7 @@ public class SearchEditorUI extends JDialog {
 		// Next font
 		JButton nextButton = new JButton("");
 		nextButton.setToolTipText("Next page");
-		img = new ImageIcon(this.getClass().getResource("imgs/btn_right.png")).getImage();
-		nextButton.setIcon(new ImageIcon(img));
+		nextButton.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/btn_right.png"));
 		nextButton.setBounds(472, 20, 45, 37);
 		panelFontNav.add(nextButton);
 		nextButton.addActionListener(new ActionListener() {

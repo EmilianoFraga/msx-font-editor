@@ -28,6 +28,7 @@
  * Designed for MSX font services                                          *
  * MVC: Model / Business Object (BO) + Data Access Object (DAO)            *
  ***************************************************************************/
+package com.msxall.marmsx.font.msx;
 
 import java.util.Formatter;
 import java.util.FormatterClosedException;

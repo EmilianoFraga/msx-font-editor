@@ -28,13 +28,14 @@
  * Mosaic editor                                                           *
  * MVC: View                                                               *
  ***************************************************************************/
+package com.msxall.marmsx.mosaic;
 
-import java.awt.BorderLayout;
+import com.msxall.marmsx.util.ResourceLoader;
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
@@ -44,7 +45,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -154,8 +154,7 @@ public class MosaicEditorUI extends JDialog {
 		JButton btnLoad = new JButton("");
 		btnLoad.setToolTipText("Load PC image");
 		btnLoad.setBounds(7, 95, 55, 27);
-		Image img = new ImageIcon(this.getClass().getResource("imgs/fileopen.png")).getImage();
-		btnLoad.setIcon(new ImageIcon(img));
+		btnLoad.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/fileopen.png"));
 		panel_image.add(btnLoad);
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -222,8 +221,7 @@ public class MosaicEditorUI extends JDialog {
 		JButton btnSave = new JButton("");
 		btnSave.setToolTipText("Create a MSX Basic program to open the mosaic");
 		btnSave.setBounds(7, 10, 55, 32);
-		img = new ImageIcon(this.getClass().getResource("imgs/msxdisk.png")).getImage();
-		btnSave.setIcon(new ImageIcon(img));
+		btnSave.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/msxdisk.png"));
 		panel_mosaic.add(btnSave);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,15 +233,13 @@ public class MosaicEditorUI extends JDialog {
 		JButton btnExport = new JButton();
 		btnExport.setToolTipText("Export image to current ASCII table on editor");
 		btnExport.setBounds(80, 10, 55, 32);
-		img = new ImageIcon(this.getClass().getResource("imgs/export.png")).getImage();
-		btnExport.setIcon(new ImageIcon(img));
+		btnExport.setIcon(ResourceLoader.loadImageIconFromAbsoluteResource("/imgs/export.png"));
 		panel_mosaic.add(btnExport);
 		btnExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				me.okClicked((Integer) asciiSpinner.getValue());
 			}
 		});
-
-
 	}
+
 }

@@ -28,11 +28,9 @@
  * PC Font interface                                                       *
  * MVC: View                                                               *
  ***************************************************************************/
+package com.msxall.marmsx.font.pc;
 
-import java.awt.BorderLayout;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;

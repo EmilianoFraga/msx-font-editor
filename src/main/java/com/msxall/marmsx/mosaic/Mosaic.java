@@ -28,6 +28,10 @@
  * Mosaic services                                                         *
  * MVC: Model                                                              *
  ***************************************************************************/
+package com.msxall.marmsx.mosaic;
+
+import com.msxall.marmsx.character.MSXCharacter;
+import com.msxall.marmsx.character.MSXCharacterData;
 
 import javax.imageio.ImageIO;
 import java.io.File;

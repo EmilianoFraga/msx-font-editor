@@ -28,8 +28,10 @@
  * Mosaic interface control                                                *
  * MVC: Control                                                            *
  ***************************************************************************/
+package com.msxall.marmsx.mosaic;
 
-import javax.swing.JDialog;
+import com.msxall.marmsx.font.editor.FontEditor;
+
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;

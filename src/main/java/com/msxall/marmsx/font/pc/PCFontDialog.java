@@ -28,8 +28,9 @@
  * PC font interface control                                               *
  * MVC: Control                                                            *
  ***************************************************************************/
+package com.msxall.marmsx.font.pc;
 
-import javax.swing.JDialog;
+import com.msxall.marmsx.font.manager.FontManager;
 
 public class PCFontDialog {
 

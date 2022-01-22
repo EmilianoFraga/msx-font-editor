@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Class Clipboard                                                       *
+ *   Class MSXFontData                                                     *
  *                                                                         *
  *   Copyright (C) 2018 by Marcelo Teixeira Silveira, D.Sc.                *
  *   MSX Font Editor: http://marmsx.msxall.com                             *
@@ -22,64 +22,79 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+package com.msxall.marmsx.font.msx;
 
 /***************************************************************************
  * Class description:                                                      *
- * Designed for storing selected font and the charcters range              *
- * MVC: Model                                                              *
+ * Designed for storing character data                                     *
+ * MVC: Model / Value Object (VO)                                          *
  ***************************************************************************/
 
-public class Clipboard {
+public class MSXFontData {
 
-	private int chr_begin;
-	private int chr_end;
-	private int font_id;
-	boolean selection_mod;
-	boolean is_empty;
+	// 256 characters, size of 8 bytes and file header of 7 bytes
+	// 256 x 8 + 7 = 2055
+	private byte font_data[] = new byte[2048];
+	private byte color_octets[] = new byte[32];
 
-	public Clipboard() {
-		selection_mod = true;
-		is_empty = true;
+	public MSXFontData() {
+		setDefaultColors();
 	}
 
-	public void set(int begin, int end, int id) {
-		chr_begin = begin;
-		chr_end = end;
-		font_id = id;
-		selection_mod = false;
-		is_empty = false;
+	public MSXFontData(byte new_data[]) {
+		setFont(new_data);
+		setDefaultColors();
 	}
 
-	// This flag notifies if early selection was modified
-	// Modified selecton may cause inconsistency
-	public void setModified() {
-		selection_mod = true;
+	public MSXFontData(byte new_data[], byte new_colors[]) {
+		setFont(new_data);
+		setColors(new_colors);
 	}
 
-	public boolean isModified() {
-		return selection_mod;
+	private void setDefaultColors() {
+		for (int i=0; i<32; i++)
+			color_octets[i] = (byte) 0xF0;
 	}
 
-	public boolean isEmpty() {
-		return is_empty;
+	public byte getColor(int ascii_code) {
+		if (ascii_code < 0 || ascii_code > 255)
+			return 0;
+
+		return color_octets[ascii_code/8];
 	}
 
-	public int getBegin() {
-		return chr_begin;
+	public byte[] getColors() {
+		byte tmp_data[] = new byte[32];
+
+		for (int i=0; i<32; i++)
+			tmp_data[i] = color_octets[i];
+
+		return tmp_data;
 	}
 
-	public int getEnd() {
-		return chr_end;
+	public void setColors(byte new_colors[]) {
+		if (new_colors.length != 32)
+			return;
+
+		for (int i=0; i<32; i++)
+			color_octets[i] = new_colors[i];
 	}
 
-	public int getFontID() {
-		return font_id;
+	public byte[] getFont() {
+		byte tmp_data[] = new byte[2048];
+
+		for (int i=0; i<2048; i++)
+			tmp_data[i] = font_data[i];
+
+		return tmp_data;
 	}
 
-	// Debug
-	public void print() {
-		System.out.println("First character: " + chr_begin);
-		System.out.println("Last character: " + chr_end);
-		System.out.println("Current font ID: " + font_id);
+	public void setFont(byte new_data[]) {
+		if (new_data.length != 2048)
+			return;
+
+		for (int i=0; i<2048; i++)
+			font_data[i] = new_data[i];
 	}
+
 }

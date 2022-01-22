@@ -28,17 +28,16 @@
  * Search editor to extract fonts from files                               *
  * MVC: Control                                                            *
  ***************************************************************************/
+package com.msxall.marmsx.search;
+
+import com.msxall.marmsx.font.msx.MSXFont;
+import com.msxall.marmsx.font.msx.MSXFontData;
 
 import java.io.*;
-import java.util.Arrays;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JOptionPane;
-import javax.swing.JFrame;
-import javax.swing.filechooser.FileFilter;
 
-
-class SearchEditor {
+public class SearchEditor {
 
 	private SearchEditorUI window;
 	private File current_dir;

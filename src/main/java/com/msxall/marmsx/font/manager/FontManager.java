@@ -28,11 +28,21 @@
  * Designed for managing the fonts and characters                          *
  * MVC: Model                                                              *
  ***************************************************************************/
+package com.msxall.marmsx.font.manager;
+
+import com.msxall.marmsx.character.MSXCharacter;
+import com.msxall.marmsx.character.MSXCharacterData;
+import com.msxall.marmsx.font.editor.Clipboard;
+import com.msxall.marmsx.font.msx.MSXFont;
+import com.msxall.marmsx.font.msx.MSXFontData;
+import com.msxall.marmsx.font.pc.RenderPCFont;
+import com.msxall.marmsx.mosaic.Mosaic;
+import com.msxall.marmsx.util.StackManager;
 
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 
-class FontManager {
+public class FontManager {
 
 	private StackManager<MSXCharacterData> char_stack = new StackManager<MSXCharacterData>();
 	private StackManager<MSXFontData> font_stack = new StackManager<MSXFontData>();

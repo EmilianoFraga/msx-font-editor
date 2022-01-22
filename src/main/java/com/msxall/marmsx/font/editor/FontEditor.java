@@ -28,16 +28,20 @@
  * Main program interface control                                          *
  * MVC: Control                                                            *
  ***************************************************************************/
+package com.msxall.marmsx.font.editor;
 
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
+import com.msxall.marmsx.font.manager.FontManager;
+import com.msxall.marmsx.font.pc.PCFontDialog;
+import com.msxall.marmsx.mosaic.Mosaic;
+import com.msxall.marmsx.mosaic.MosaicEditor;
+import com.msxall.marmsx.search.SearchEditor;
+
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
 
-
-class FontEditor {
+public class FontEditor {
 
 	private FontEditorUI window;
 	private FontManager fm;

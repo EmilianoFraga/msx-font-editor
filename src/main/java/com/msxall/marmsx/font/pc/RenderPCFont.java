@@ -28,6 +28,7 @@
  * Designed for drawing PC characters on 8x8 MSX format                    *
  * MVC: Model                                                              *
  ***************************************************************************/
+package com.msxall.marmsx.font.pc;
 
 import java.awt.Canvas;
 import java.awt.Rectangle;
