@@ -7,6 +7,7 @@
 	<groupId>com.msxall.marmsx</groupId>
 	<artifactId>mfe</artifactId>
 	<version>1.7.0</version>
+	<name>MSX Font Editor</name>
 
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -37,6 +38,7 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 		<plugins>
