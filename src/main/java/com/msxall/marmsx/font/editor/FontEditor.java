@@ -35,6 +35,7 @@ import com.msxall.marmsx.font.pc.PCFontDialog;
 import com.msxall.marmsx.mosaic.Mosaic;
 import com.msxall.marmsx.mosaic.MosaicEditor;
 import com.msxall.marmsx.search.SearchEditor;
+import com.msxall.marmsx.util.ResourceLoader;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -55,7 +56,7 @@ public class FontEditor {
 
 		// Create main form
 		window = new FontEditorUI(this);
-		window.setTitle("MSX Font Editor v. 1.6.1 - MarMSX 2021");
+		window.setTitle(ResourceLoader.getAbsoluteResourceAsString("/appname.txt"));
 		window.setBounds(100, 100, 915, 665);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
@@ -209,7 +210,7 @@ public class FontEditor {
 		}
 
 		// Get file name and directory
-		File filename[] = fc_load.getSelectedFiles();
+		File[] filename = fc_load.getSelectedFiles();
 		current_dir = fc_load.getCurrentDirectory();
 
 		// Load only the color map
@@ -226,8 +227,8 @@ public class FontEditor {
 		// Start to load fonts
 		fm.clearAllFonts();
 
-		for (int i=0; i<filename.length; i++) {
-			if (!fm.loadFont(filename[i].toString())) {
+		for (File file : filename) {
+			if (!fm.loadFont(file.toString())) {
 				JOptionPane.showMessageDialog(window, "Error while loading font", "Load Error", JOptionPane.ERROR_MESSAGE);
 				fm.clearAllFonts();
 				return;
@@ -284,8 +285,8 @@ public class FontEditor {
 		current_dir = fc_save.getCurrentDirectory();
 
 		// Check for ".alf" extension
-		if (!checkFileExtension(filename.getName().toString(), f_ext[filter_option]))
-			filename = new File(filename.toString() + f_ext[filter_option]);
+		if (!checkFileExtension(filename.getName(), f_ext[filter_option]))
+			filename = new File(filename + f_ext[filter_option]);
 
 		// Check if file exists
 		if (filename.exists()) {
