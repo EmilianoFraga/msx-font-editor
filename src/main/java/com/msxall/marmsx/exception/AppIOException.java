@@ -1,4 +1,4 @@
-package com.msxall.marmsx;
+package com.msxall.marmsx.exception;
 
 public class AppIOException extends RuntimeException {
 	public AppIOException() {
